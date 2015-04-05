@@ -1,0 +1,4 @@
+
+public enum BookType {
+	SCIENCE_FICTION, TRAVEL, SOFTWARE_ENGINEERING;
+}
