@@ -102,7 +102,7 @@ public class Model
 		    	do
 		    	{	
 			    	//Peel off the author
-		    		String author = line.substring( (line.indexOf(".")+1) , (line.indexOf(',')-1) );
+		    		String author = line.substring( (line.indexOf(".")+1) , (line.indexOf(',')) );
 		    		//Peel off the title
 		    		String title = line.substring( (line.indexOf(',')+1) , (line.length()) );
 		    		double price = catPrice;
