@@ -16,6 +16,7 @@ public class Model
 	
 	Model()
 	{
+		//Load the text file catalog in
 		catalog = LoadCatalog("catalog.txt");
 		shoppingCart = new ArrayList<Book>();
 	}
@@ -58,8 +59,10 @@ public class Model
 	//Returns an ArrayList of the books from the given category
 	ArrayList<Book> getBooksOfType(String identifier)
 	{
+		//makes a list of the keys from the Map
 		String[] keys = catalog.keySet().toArray(new String[catalog.keySet().size()]);
 		
+		//searches for the given identifier as a substring of the keys
 		for(int i = 0; i < keys.length; i++)
 		{
 			if(keys[i].contains(identifier))
@@ -127,6 +130,7 @@ public class Model
 		return cat;
 	}
 
+	//returns the current shopping cart
     public ArrayList<Book> getShoppingCart() {
         return shoppingCart;
     }

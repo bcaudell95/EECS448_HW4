@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComboBox;
 
@@ -17,15 +18,17 @@ public class Controller {
 		view = new View(this);
 		view.setVisible(true);
 
-        this.selectedBooks = model.getBooksOfType("Science Fiction Books");
-        view.populateInventory(getArrayOfBookNames(selectedBooks));
+		//populate inventory on initial load
+        onCategoriesDropDownChange("Science Fiction");
 	}
 
+	//user changes category
 	public void onCategoriesDropDownChange(String item) {
         this.selectedBooks = model.getBooksOfType(item + " Books");
         view.populateInventory(getArrayOfBookNames(selectedBooks));
 	}
 
+	//create array to pass into JList later on
     private String[] getArrayOfBookNames(ArrayList<Book> selectedBooks) {
         String[] bookNames = new String[selectedBooks.size()];
 
@@ -45,6 +48,8 @@ public class Controller {
 	}
 	
 	public String[] onRemoveButtonClick(int[] selectedIndices) {
+		
+		//removes books in reverse order; removing books earlier in the list first messes up the idices of the books later in the list
         for(int i = selectedIndices.length; i > 0; i--) {
             model.removeBookFromCart(model.getShoppingCart().get(selectedIndices[i - 1]));
         }
@@ -54,6 +59,10 @@ public class Controller {
 	
 	public double onCheckoutButtonClick() {
 		return model.calculateFinalPrice();
+	}
+
+	public List<Book> getShoppingCart() {
+		return model.getShoppingCart();
 	}
 	
 }
