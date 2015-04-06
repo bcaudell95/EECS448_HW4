@@ -126,4 +126,8 @@ public class Model
 		
 		return cat;
 	}
+
+    public ArrayList<Book> getShoppingCart() {
+        return shoppingCart;
+    }
 }

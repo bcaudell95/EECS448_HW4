@@ -55,13 +55,13 @@ public class View extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String[] inventoryItems = controller.onAddButtonClick(inventoryList.getSelectedIndices());
-				populateInventory(inventoryItems);
+				populateShoppingCart(inventoryItems);
 			}
 		});
 		this.removeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String[] shoppingCartItems = controller.onAddButtonClick(shoppingCartList.getSelectedIndices());
+				String[] shoppingCartItems = controller.onRemoveButtonClick(shoppingCartList.getSelectedIndices());
 				populateShoppingCart(shoppingCartItems);
 			}
 		});
